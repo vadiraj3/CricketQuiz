@@ -9,18 +9,23 @@ var curpage=0;
             ["7","7.Which player has won most test matches as captain?","G Smith","Fleming","C Lloyd","Ponting","2","false","images/g smith.jpg","images/fleming.webp","images/lloyd.jpg","images/pontingcaptain.jpg"],
             ["8","8.Which country holds the record for highest score in T20I's?","Australia","Afganistan","India","West Indies","3","false","images/australia.jpg","images/afg.png","images/india.jfif","images/windies.jpg"],
             ["9","9.Who holds the record for fastest century in IPL?","AB ","McCullum","Russel"," Gayle","5","false","images/AB.jpeg","images/mccullum.jfif","images/russel.jpg","images/Gayle.png"],
-            ["10","10.Who won the first ever IPL in 2008?","RR","CSK","KXIP","Deccan Chargers","2","false","images/rajastan.webp","images/chennai.jpg","images/punjab.jpg","images/deccan.jpg"]];
+            ["10","10.Who won the first ever IPL in 2008?","RR","CSK","KXIP","DC","2","false","images/rajastan.webp","images/chennai.jpg","images/punjab.jpg","images/deccan.jpg"]];
 
-            var wicket=["wicket/dropped1.mp3","wicket/dropped2.mp3","wicket/dropped4.mp3","wicket/dropped6.mp3","wicket/dropped7.mp3","wicket/dropped8.mp3","wicket/dropped9.mp3","wicket/dropped10.mp3","wicket/dropped11.mp3","wicket/dropped12.mp3","wicket/dropped13.mp3","wicket/dropped15.mp3"];
-            var audio=["audio/six1.mp3","audio/six3.mp3","audio/six2.mp3","audio/six4.mp3","audio/six5.mp3","audio/six6.mp3","audio/six7.mp3","audio/six9.mp3","audio/six10.mp3","audio/six8.mp3","audio/six11.mp3","audio/six12.mp3","audio/six13.mp3","audio/six14.mp3","audio/six15.mp3","audio/six16.mp3","audio/six17.mp3","audio/six18.mp3"];
-            var scores=["ump/mortazafront.jpg","ump/mortaza.jpg","ump/rahul.jpg","ump/rahulback.jpg","ump/bhajjifront.webp","ump/bhajji.jfif","ump/markramfront.jpg","ump/markram.jpg","ump/mortazafront.jpg","ump/dravidfront.jfif","ump/dravid.png","ump/chahalfront.webp","ump/chahal.jpg","ump/dhoni.png","ump/dhoni-back.jpg","ump/jadega.webp","ump/jadega.jpg","ump/andersonfront.jpg","ump/anderson.jpg","ump/sachin.jpg","ump/sachinback.jpg"];
+            var wicket=["wicket/dropped2.mp3","wicket/dropped4.mp3","wicket/dropped5.mp3","wicket/dropped6.mp3","wicket/dropped7.mp3","wicket/dropped9.mp3","wicket/dropped10.mp3","wicket/dropped11.mp3","wicket/dropped12.mp3","wicket/dropped13.mp3","wicket/dropped3.mp3"];
+            var audio=["audio/six3.mp3","audio/six2.mp3","audio/six4.mp3","audio/six6.mp3","audio/six7.mp3","audio/six9.mp3","audio/six10.mp3","audio/six8.mp3","audio/six11.mp3","audio/six12.mp3","audio/six13.mp3","audio/six14.mp3","audio/six16.mp3","audio/six17.mp3","audio/six18.mp3"];
+            var scoresfront=["ump/mortazafront.jpg","ump/rahulback.jpg","ump/hales.jfif","ump/bhajjifront.webp","ump/markramfront.jpg","ump/dravidfront.jfif","ump/chahalfront.webp","ump/dhoni.png","ump/jadega.webp","ump/andersonfront.jpg","ump/sachin.jpg"];
+            var scoresback=["ump/mortaza.jpg","ump/rahul.jpg","ump/halesback.jpg","ump/bhajji.jfif","ump/markram.jpg","ump/dravid.png","ump/chahal.jpg","ump/dhoni-back.jpg","ump/jadega.jpg","ump/anderson.jpg","ump/sachinback.jpg"];
+            var comments=["Golden Duck","Worst Innings Ever","Thats pretty bad","Poor Performance","Just above Average","Good","Thats better","Great Innings","Mr.dependable","So Near Yet so Far","Mr.Perfect"]
             var boole= "true";
             var index=0;
             var attr;
             var answered=[];
-            var suggestions=["Defend it Carefully","Pick the Googly","Play a Elegant drive","Smash it ","Pick the slower one",
-            "Duck Under It ","Captain Courageous","Who Smacked'em More","MVP","Beginners Luck?"];
+            const comment=document.querySelector(".comment");
             const header= document.querySelector(".header");
+            const batSound= document.querySelector("#batsound");
+            const crowd= document.querySelector("#crowd");
+            const gif= document.querySelector(".gif");
+            const gifContainer= document.querySelector(".gif-container");
             const underline= document.querySelector(".underline");
             const question= document.querySelector(".question1");
             const next= document.querySelector(".next");
@@ -73,11 +78,27 @@ var curpage=0;
                   });    
                     
              function myfunction(){
+              crowd.pause();
+              batSound.play();
               attr=this.getAttribute("data-id");
               if(myquiz[curpage][6]==attr){
                   myanswers++;
                  playCorrect();
+                 gifContainer.classList.add("show-gif-container");
+                 gif.src="gifs/billySix.gif";
+                 setTimeout(function(){gifContainer.classList.remove("show-gif-container");},3000);
+                    
+                
+                 
+                 
                }else{
+                
+                gif.src="gifs/billyOut.gif";
+                gifContainer.classList.add("show-gif-container");
+                setTimeout(function(){ gifContainer.classList.remove("show-gif-container");},1500);
+                
+               
+               
                     playWrong();
                }
                 answered[curpage]=attr;
@@ -127,9 +148,9 @@ var curpage=0;
                     if(answered[curpage]){
                         console.log(curpage);
                       audioControl.pause();
-                      
+                      crowd.play();
                        curpage++;
-                        header.innerHTML=suggestions[curpage];
+                      
                     var num=1;
                     answer.forEach(function(item){
                         item.classList.remove("btn-success","btn-danger");
@@ -160,11 +181,11 @@ var curpage=0;
                 
                 start.addEventListener("click",function(){
                    
-                   
+                   crowd.play();
                    var data=start.innerHTML;
-                   if(data=="Start"){
+                   if(data=="Play"){
                        
-                       header.innerHTML=suggestions[curpage];
+                       header.style.display="none";
                        
                     start.style.display="none";
                     next.style.display="block";
@@ -188,7 +209,7 @@ var curpage=0;
                     }
                 }
                  function performance(){
-                     
+                     header.style.display="block";
                      underline.style.width="5rem";
                      if(myanswers>=9){
                         header.innerHTML="AWESOME";
@@ -213,13 +234,20 @@ var curpage=0;
                  gridConatiner.style.display="block";
               
              imgContainer.style.display="block";
-             myanswers=myanswers%2==0?myanswers:myanswers-1;
-             imagefront.setAttribute("src",scores[myanswers]);
-             imageback.setAttribute("src",scores[myanswers+1]);
+           //  var myanswersImg=(myanswers%2)==0?myanswers:myanswers+1;
+             imagefront.setAttribute("src",scoresfront[myanswers-1]);
+             imageback.setAttribute("src",scoresback[myanswers-1]);
              container.style.display="none";
              
              
-             
+               comment.innerHTML=comments[myanswers-1];
+               if(myanswers>5){
+                  score.style.color="Green";
+                   comment.style.color="Green";
+               }else{
+                   score.style.color="Green";
+                   comment.style.color="Red";
+               }
                 gridConatiner.style.display="block";
                 squareConatiner.classList.add("display");
               
@@ -233,7 +261,6 @@ var curpage=0;
                audioControl.play();
              }
              function playWrong(){
-                var sound= Math.floor(Math.random()*13);
                 audioControl.src=wicket[curpage];
                 
                 audioControl.play();

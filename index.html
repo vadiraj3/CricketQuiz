@@ -17,11 +17,14 @@
     <body>
 
         <div class="container">
-            <div class="row "><h4 class="header">Wecome To Online Quiz</h4></div>
+           <audio src="sounds/crowd.m4a" id="crowd"></audio>
+            <div class="row "><h4 class="header" style="margin-top: 30%;color: white;">Ultimate Cricket Quiz<i class="fas fa-cricket" style="color:white"></i></h4></div>
             <div class="underline"></div>
             <div class="box">
-                <div class="row question"><h3 class="question1"></h3></div>
+                <div class="gif-container"><img class="gif" src="" alt=""></div>
+                <div class="row question"><h3 class="question1" style="color: white;"></h3></div>
                     <div class=" answer-box">
+                        <audio src="sounds/bat+hit+ball.mp3" id="batsound"></audio>
                         <div class="col-sm-6"><img class="img" src="" alt=""><a data-id="2" class="btn btn-default answer"></a></div>
                         <div class="col-sm-6"><img class="img" src="" alt=""><a data-id="3" class="btn btn-default answer"></a></div>
                         <div class="col-sm-6"><img class="img" src="" alt=""><a data-id="4" class="btn btn-default answer"></a></div>
@@ -33,7 +36,7 @@
                 
                 <div class=" nextprev">
                     <div class="cont "><button class="btn btn-primary prev ">Previous</button></div>
-                    <div class="cont "><button class="btn btn-success start ">Start</button></div>
+                    <div class="cont "><button class="btn btn-success start ">Play</button></div>
                     <div class="cont"><button class="btn btn-primary next">Next</button></div>
                  
                     
@@ -46,7 +49,8 @@
             </div>
      
                 <div class="square-container">
-                 <!--  <div"><span style="margin: auto;font-size: 1rem;"><i class="fas fa-arrow-up"></i></span></div> -->
+                    <h2 class="comment" style="text-align: center;"></h2>
+                 <div style="margin: auto;"><span style="text-align: center;font-size: 5rem;"></div> 
                     <h4 style="text-align: center;margin-top:20%;color: burlywood;">Your Score</h4>
                     <h2 class="score"></h2> 
                 </div>
