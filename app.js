@@ -252,7 +252,7 @@ var curpage=0;
                 gridConatiner.style.display="block";
                 squareConatiner.classList.add("display");
               
-                score.innerHTML=myanswers-1;  
+                score.innerHTML=myanswers;  
              }
              //audio effects
              function playCorrect()
