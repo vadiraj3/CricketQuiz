@@ -13,8 +13,8 @@ var curpage=0;
 
             var wicket=["wicket/dropped2.mp3","wicket/dropped4.mp3","wicket/dropped5.mp3","wicket/dropped6.mp3","wicket/dropped7.mp3","wicket/dropped9.mp3","wicket/dropped10.mp3","wicket/dropped11.mp3","wicket/dropped12.mp3","wicket/dropped13.mp3","wicket/dropped3.mp3"];
             var audio=["audio/six3.mp3","audio/six2.mp3","audio/six4.mp3","audio/six6.mp3","audio/six7.mp3","audio/six9.mp3","audio/six10.mp3","audio/six8.mp3","audio/six11.mp3","audio/six12.mp3","audio/six13.mp3","audio/six14.mp3","audio/six16.mp3","audio/six17.mp3","audio/six18.mp3"];
-            var scoresfront=["ump/mortazafront.jpg","ump/rahul.jpg","ump/hales.jfif","ump/bhajjifront.webp","ump/markramfront.jpg","ump/dravidfront.jfif","ump/chahalfront.webp","ump/dhoni.png","ump/jadega.webp","ump/andersonfront.jpg","ump/sachin.jpg"];
-            var scoresback=["ump/mortaza.jpg","ump/rahulback.jpg","ump/halesback.jpg","ump/bhajji.jfif","ump/markram.jpg","ump/dravid.png","ump/chahal.jpg","ump/dhoni-back.jpg","ump/jadega.jpg","ump/anderson.jpg","ump/sachinback.jpg"];
+            var scoresfront=["ump/mortazafront.jpg","ump/rahul.jpg","ump/halesback.jfif","ump/bhajjifront.webp","ump/markramfront.jpg","ump/dravidfront.jfif","ump/chahalfront.webp","ump/dhoni.png","ump/jadega.webp","ump/andersonfront.jpg","ump/sachin.jpg"];
+            var scoresback=["ump/mortaza.jpg","ump/rahulback.jpg","ump/hales.jpg","ump/bhajji.jfif","ump/markram.jpg","ump/dravid.png","ump/chahal.jpg","ump/dhoni-back.jpg","ump/jadega.jpg","ump/anderson.jpg","ump/sachinback.jpg"];
             var comments=["Golden Duck","Worst Innings Ever","Thats pretty bad","Poor Performance","Just above Average","Good","Thats better","Great Innings","Mr.dependable","So Near Yet so Far","Mr.Perfect"]
             var boole= "true";
             var index=0;
@@ -192,7 +192,8 @@ var curpage=0;
                     answerBox.style.display="grid";
                     display(curpage);
                    }else{
-                   
+                        audioControl.pause();
+                        crowd.play();
                         endQuiz();
                    }
                     
@@ -245,7 +246,7 @@ var curpage=0;
                   score.style.color="Green";
                    comment.style.color="Green";
                }else{
-                   score.style.color="Green";
+                   score.style.color="Red";
                    comment.style.color="Red";
                }
                 gridConatiner.style.display="block";
@@ -266,5 +267,6 @@ var curpage=0;
                 audioControl.play();
              }
            
+
 
 
