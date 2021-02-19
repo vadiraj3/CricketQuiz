@@ -236,12 +236,12 @@ var curpage=0;
               
              imgContainer.style.display="block";
            //  var myanswersImg=(myanswers%2)==0?myanswers:myanswers+1;
-             imagefront.setAttribute("src",scoresfront[myanswers+1]);
-             imageback.setAttribute("src",scoresback[myanswers+1]);
+             imagefront.setAttribute("src",scoresfront[myanswers]);
+             imageback.setAttribute("src",scoresback[myanswers]);
              container.style.display="none";
              
              
-               comment.innerHTML=comments[myanswers+1];
+               comment.innerHTML=comments[myanswers];
                if(myanswers>5){
                   score.style.color="Green";
                    comment.style.color="Green";
